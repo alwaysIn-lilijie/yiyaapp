@@ -1,15 +1,26 @@
+import { useTheme } from '@react-navigation/native';
 import React, { useState,useEffect ,useRef} from 'react';
-import { View, ImageBackground, Text, Image, TouchableOpacity, StatusBar, Animated, Modal ,AppState} from 'react-native';
+import { View, Image, TouchableOpacity, StatusBar, Animated, Modal ,AppState} from 'react-native';
+import { useDispatch } from 'react-redux';
+import { changeUser, logout } from '@/reducers/LoginReducer';
+import { strings } from '@/localization';
+import { styles } from '@/screens/Login/Login.styles';
+import { shadow, theme } from '@/theme';
 
+import { getAuthCode } from '@/components/dingtalk/index';
+import { LoginController } from '@/controllers';
+import { networkService } from '@/networking';
+import TextFix from '@/components/TextFix'
+// import { AntDesign } from '@expo/vector-icons';
+import Picker from 'react-native-picker';
+import simulatorLogin from "@/config/simulatorLogin"
 export function Login() {
-  /*const { colors } = useTheme();
+  const { colors } = useTheme();
   const dispatch = useDispatch();
   const [userSelect, setUserSelect] = useState(false);
   const [isDev] = useState(false);
   const [code, setCode] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
-  const errors =useSelector((state) => errorsSelector([TYPES.LOGIN], state), shallowEqual);
-  const appVersion = Application.nativeApplicationVersion
   const [loginUser,setLoginUser] = useState([]);
   const [loading, setLoading] = useState(false);
   const rotation = useRef(new Animated.Value(0)).current;
@@ -146,11 +157,41 @@ export function Login() {
   };
   const logoutHandle = ()=>{
     dispatch(logout());
-  }*/
+  }
   return (
     <View style={{flex:1,backgroundColor:'#fff'}}>
       <StatusBar  backgroundColor="transparent" barStyle="dark-content" translucent={true} />
-      <Text>login</Text>
+      <Modal
+        transparent={true}
+        onShow={showPicker}
+        visible={modalVisible}
+        style={{flex:1}}
+        onDismiss={()=>{
+          Picker.hide();
+        }}
+        onRequestClose={() => {}}>
+        <View style={{flex:1,backgroundColor:'#000',opacity:0.3,height:"100%",width:"100%",position:"absolute"}}></View>
+      </Modal>
+      <View style={{marginTop:theme.DpHeight(284),display:'flex',justifyContent:'center',alignItems:'center',flex:1}}>
+        <Image source={require('@/assets/ic_launcher.png')} style={{width:theme.DpWidth(114),height:theme.DpWidth(114), resizeMode:'contain'}} />
+        <TextFix style={{fontSize:theme.fontSize32,color: theme.colorForNormal4Text,textAlign:'center',marginTop:10}}>咿呀通</TextFix>
+      </View>
+      <View style={{flex:1,paddingLeft:theme.DpWidth(60),paddingRight:theme.DpWidth(60)}}>
+        <TouchableOpacity style={[styles.loginBox]} onPress={handleSubmit}>
+          {/*<AntDesign name="dingding" style={loading?{display:'none'}:''} size={theme.DpWidth(48)} color={"#fff"}   />*/}
+          <Animated.View
+            style={{ transform: [{ rotate }],...!loading?{display:'none'}:'' }}
+          >
+            {/*<AntDesign name="loading1" size={theme.DpWidth(48)} style={!loading?{display:'none'}:''} color={"#fff"}   />*/}
+          </Animated.View>
+          {/*<Image source={require('@/assets/ic_launcher.png')} style={{width:theme.DpWidth(114),height:theme.DpWidth(114), resizeMode:'contain'}} />*/}
+
+          <View style={{ marginLeft:5}}>
+            <TextFix style={{fontSize:theme.fontSize32, color:'#fff'}}>{loading ? "正在登录中" : '登录'}</TextFix>
+          </View>
+        </TouchableOpacity>
+
+      </View>
     </View>
   )
 }
