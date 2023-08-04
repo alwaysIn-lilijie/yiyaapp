@@ -3,6 +3,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Provider } from 'react-redux';
 import { StyleSheet, PermissionsAndroid,ToastAndroid,Alert } from 'react-native';
 import { PersistGate } from 'redux-persist/integration/react';
+
 import { persistor, store } from '@/store';
 // import { networkService } from '@/networking';
 import { RootNavigator } from '@/navigation';

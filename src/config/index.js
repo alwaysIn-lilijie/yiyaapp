@@ -1,9 +1,9 @@
 const baseURL={
     app:{
-        dev:'http://appserver-dev.yiyahui.com',
+        dev:'https://appserver-dev.yiyahui.com',
         // dev:'http://appserver.yiyahui.com',
         // production:'http://appserver.yiyahui.com'
-        production:'http://appserver.yiyahui.com'
+        production:'https://appserver.yiyahui.com'
     },
     h5:{
         dev:'http://appweb-dev.yiyahui.com',

@@ -7,6 +7,7 @@
  */
 import {createSlice, createAction, createAsyncThunk} from '@reduxjs/toolkit';
 import { networkService } from '@/networking';
+import { storage } from '@/storage';
 export const login = createAsyncThunk(
     'login/sign',
     async(thunkAPI) => {
@@ -43,12 +44,14 @@ const loginReducer = createSlice({
             // state.deptInfo.deptAreaId = action.payload.deptAreaId;
         },
         logout(state,action) {
-
+            // storage.clear()
             state.selectCount=false;
             state.loginUser=undefined;
-            state.user = undefined;
             state.deptInfo = '';
             state.menuList =[];
+            state.user = undefined;
+
+
         },
         changeUser(state,action){
             state.user = action.payload;

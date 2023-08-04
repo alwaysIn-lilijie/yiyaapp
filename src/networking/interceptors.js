@@ -36,6 +36,7 @@ export const resInterceptor = {
     }
   },
   onReject(error) {
+    console.log(JSON.stringify(error));
     if (error.response) {
       return Promise.reject(error.response);
     }

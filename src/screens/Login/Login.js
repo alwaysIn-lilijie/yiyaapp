@@ -1,12 +1,12 @@
 import { useTheme } from '@react-navigation/native';
 import React, { useState,useEffect ,useRef} from 'react';
 import { View, Image, TouchableOpacity, StatusBar, Animated, Modal ,AppState} from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 import { changeUser, logout } from '@/reducers/LoginReducer';
 import { strings } from '@/localization';
 import { styles } from '@/screens/Login/Login.styles';
 import { shadow, theme } from '@/theme';
-
+import { storage } from '@/storage';
 import { getAuthCode } from '@/components/dingtalk/index';
 import { LoginController } from '@/controllers';
 import { networkService } from '@/networking';
@@ -14,22 +14,33 @@ import TextFix from '@/components/TextFix'
 // import { AntDesign } from '@expo/vector-icons';
 import Picker from 'react-native-picker';
 import simulatorLogin from "@/config/simulatorLogin"
-export function Login() {
+export function Login({ navigation }) {
   const { colors } = useTheme();
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.login.user);
+
   const [userSelect, setUserSelect] = useState(false);
-  const [isDev] = useState(false);
+  const [isDev] = useState(true);
   const [code, setCode] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
   const [loginUser,setLoginUser] = useState([]);
   const [loading, setLoading] = useState(false);
   const rotation = useRef(new Animated.Value(0)).current;
   useEffect(()=>{
+    // storage.clear();
+    // dispatch(logout());
+
     if(loading){
       startAnimation();
     }
 
   },[loading])
+  useEffect(()=>{
+    if(user){
+      navigation.navigate('mainPage')
+    }
+
+  },[])
   useEffect(()=>{
     if(code){
       console.log(code);
@@ -40,17 +51,17 @@ export function Login() {
     }
   },[code])
 
-  useEffect(()=>{
-    AppState.addEventListener('change', handleAppStateChange);
-    return () => {
-      AppState.removeEventListener("change", handleAppStateChange);
-    };
-  },[])
-  function  handleAppStateChange(nextAppState){
-    if (nextAppState === 'background') {
-      setModalVisible(false)
-    }
-  }
+  // useEffect(()=>{
+  //   AppState.addEventListener('change', handleAppStateChange);
+  //   return () => {
+  //     AppState.removeEventListener("change", handleAppStateChange);
+  //   };
+  // },[])
+  // function  handleAppStateChange(nextAppState){
+  //   if (nextAppState === 'background') {
+  //     setModalVisible(false)
+  //   }
+  // }
   const login = async(code) => {
     try {
       console.log('login');
@@ -85,10 +96,11 @@ export function Login() {
     outputRange: ['0deg', '360deg'],
   });
   const handleSubmit = async() => {
+    console.log(1111);
     if(loading){
       return
     }
-    setLoading(true)
+
     if(isDev){
       // 模拟器登录
       try{
@@ -101,6 +113,8 @@ export function Login() {
             setModalVisible(true)
           }else {
             await dispatch(changeUser(resp.data[0]));
+            navigation.navigate('mainPage')
+
           }
         }
         return null;
@@ -110,6 +124,7 @@ export function Login() {
 
 
     }else {
+      setLoading(true)
       try {
         let result = await getAuthCode();
         // console.log(JSON.stringify(result));
@@ -157,6 +172,11 @@ export function Login() {
   };
   const logoutHandle = ()=>{
     dispatch(logout());
+  }
+  if(user){
+    return (
+      <View style={{flex:1,backgroundColor:'#fff'}}></View>
+    )
   }
   return (
     <View style={{flex:1,backgroundColor:'#fff'}}>
