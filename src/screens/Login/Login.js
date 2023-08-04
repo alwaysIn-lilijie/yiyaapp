@@ -14,6 +14,7 @@ import TextFix from '@/components/TextFix'
 // import { AntDesign } from '@expo/vector-icons';
 import Picker from 'react-native-picker';
 import simulatorLogin from "@/config/simulatorLogin"
+import {getUpdate,loginPwd} from "@/components/api"
 export function Login({ navigation }) {
   const { colors } = useTheme();
   const dispatch = useDispatch();
@@ -95,13 +96,24 @@ export function Login({ navigation }) {
     inputRange: [0, 1],
     outputRange: ['0deg', '360deg'],
   });
-  const handleSubmit = async() => {
+  const handleSubmit = async(type) => {
     console.log(1111);
     if(loading){
       return
     }
-
+    if(type){
+      let params={
+        username:'常朝龙',
+        password:'dq990327'
+      }
+      let res=await loginPwd(params)
+      console.log(res);
+      return  false
+    }
     if(isDev){
+      // let res= await getUpdate()
+      // console.log(res);
+      // return
       // 模拟器登录
       try{
         let resp = simulatorLogin()
@@ -197,21 +209,22 @@ export function Login({ navigation }) {
         <TextFix style={{fontSize:theme.fontSize32,color: theme.colorForNormal4Text,textAlign:'center',marginTop:10}}>咿呀通</TextFix>
       </View>
       <View style={{flex:1,paddingLeft:theme.DpWidth(60),paddingRight:theme.DpWidth(60)}}>
-        <TouchableOpacity style={[styles.loginBox]} onPress={handleSubmit}>
-          {/*<AntDesign name="dingding" style={loading?{display:'none'}:''} size={theme.DpWidth(48)} color={"#fff"}   />*/}
-          <Animated.View
-            style={{ transform: [{ rotate }],...!loading?{display:'none'}:'' }}
-          >
-            {/*<AntDesign name="loading1" size={theme.DpWidth(48)} style={!loading?{display:'none'}:''} color={"#fff"}   />*/}
-          </Animated.View>
-          {/*<Image source={require('@/assets/ic_launcher.png')} style={{width:theme.DpWidth(114),height:theme.DpWidth(114), resizeMode:'contain'}} />*/}
+        <TouchableOpacity style={[styles.loginBox]} onPress={()=>handleSubmit()}>
 
+          <Image source={require('@/assets/dingding.png')} style={{width:theme.DpWidth(48),height:theme.DpWidth(48), resizeMode:'contain'}} />
           <View style={{ marginLeft:5}}>
             <TextFix style={{fontSize:theme.fontSize32, color:'#fff'}}>{loading ? "正在登录中" : '登录'}</TextFix>
           </View>
         </TouchableOpacity>
-
       </View>
+      {/*<View style={{flex:1,paddingLeft:theme.DpWidth(60),paddingRight:theme.DpWidth(60)}}>*/}
+      {/*  <TouchableOpacity style={[styles.loginBox2]} onPress={()=>handleSubmit(1)}>*/}
+
+      {/*    <View style={{ marginLeft:5}}>*/}
+      {/*      <TextFix style={{fontSize:theme.fontSize32, color:'#fff'}}>{loading ? "正在登录中" : '游客登录'}</TextFix>*/}
+      {/*    </View>*/}
+      {/*  </TouchableOpacity>*/}
+      {/*</View>*/}
     </View>
   )
 }

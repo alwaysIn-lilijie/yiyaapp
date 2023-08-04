@@ -11,7 +11,7 @@ import { networkService } from '@/networking/NetworkService';
 export const getDeptList = async () => {
   console.log("url-----",baseURL+ '/yiya-erp/system/dept/tree',)
   return networkService.request({
-    url: baseURL+ '/sys/login/dept/tree',
+    url: baseURL+ '/appserver/sys/login/dept/tree',
     method: 'get',
   });
 };
@@ -30,14 +30,14 @@ export const getPatientList = async (options)=>{
   })
 }
 export  const getUserMenu= async ()=>{
-  let url='/sys/menu/getAppMenuByRole'
+  let url='/appserver/sys/menu/getAppMenuByRole'
   return networkService.request({
     url:baseURL+url,
     method:'get'
   })
 }
 export  const getUpdate= async ()=>{
-  let url='/config/getProperties'
+  let url='/appserver/config/getProperties'
   return networkService.request({
     url:baseURL+url,
     method:'get'
@@ -45,6 +45,14 @@ export  const getUpdate= async ()=>{
 }
 export  const saveLog= async (data)=>{
   let url='/log/saveLog'
+  return networkService.request({
+    url:baseURL+url,
+    method:'post',
+    data:data
+  })
+}
+export  const loginPwd= async (data)=>{
+  let url='/yiya-erp/login'
   return networkService.request({
     url:baseURL+url,
     method:'post',

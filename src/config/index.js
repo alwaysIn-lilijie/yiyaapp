@@ -1,6 +1,6 @@
 const baseURL={
     app:{
-        dev:'https://appserver-dev.yiyahui.com',
+        dev:'https://gw-dev.yiyahui.com',
         // dev:'http://appserver.yiyahui.com',
         // production:'http://appserver.yiyahui.com'
         production:'https://appserver.yiyahui.com'

@@ -3,13 +3,12 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Provider } from 'react-redux';
 import { StyleSheet, PermissionsAndroid,ToastAndroid,Alert } from 'react-native';
 import { PersistGate } from 'redux-persist/integration/react';
-
 import { persistor, store } from '@/store';
 // import { networkService } from '@/networking';
 import { RootNavigator } from '@/navigation';
-// import Toast from './components/Toast';
-// import PopUp from './components/Modal';
-// import Loading from './components/Loading';
+import Toast from '@/components/Toast';
+import PopUp from '@/components/Modal';
+import Loading from '@/components/Loading';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -42,6 +41,9 @@ export default function App() {
         </GestureHandlerRootView>
         {/*</SafeAreaView>*/}
       </PersistGate>
+      <Toast />
+      <PopUp />
+      <Loading />
     </Provider>
   );
 }

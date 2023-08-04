@@ -1,18 +1,16 @@
 import { useTheme } from '@react-navigation/native';
 import {useEffect, useState,useRef} from 'react';
 import { useDispatch } from 'react-redux';
-import { Image, StyleSheet,View,TouchableOpacity ,BackHandler,Linking} from 'react-native';
+import {  StyleSheet,View,TouchableOpacity ,BackHandler,Linking} from 'react-native';
 import { useSelector } from 'react-redux';
 import {theme} from "@/theme"
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { WebView } from 'react-native-webview';
-import Spinner from 'react-native-loading-spinner-overlay';
-import { setAppVersion, login, setDeptInfo, changeUser, logout,changeDeptInfo } from '@/reducers/LoginReducer';
+import {  setDeptInfo, logout,changeDeptInfo } from '@/reducers/LoginReducer';
 
 import config from '@/config';
 import TextFix from '@/components/TextFix';
 export function WebViewPage({ navigation,route }) {
-  const { colors } = useTheme();
   const loginInfo = useSelector((state) => state.login);
   const [webUrl, setWebUrl] = useState("");
   const [webProgress, setWebProgress] = useState("");

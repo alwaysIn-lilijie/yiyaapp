@@ -225,7 +225,7 @@ export function MainPage({ navigation }) {
         onRequestClose={() => {}}>
         <View style={{flex:1,backgroundColor:'#000',opacity:0.3,height:"100%",width:"100%",position:"absolute"}}></View>
       </Modal>
-      <View style={{display:"flex",justifyContent:'space-between',alignItems:'center',flexDirection:'row',marginTop:theme.DpHeight(68)}}>
+      <View style={{display:"flex",justifyContent:'space-between',alignItems:'center',flexDirection:'row',marginTop:theme.DpHeight(68),paddingHorizontal:theme.DpWidth(16)}}>
         <TouchableOpacity onPress={()=>{ if(!deptList||deptList.length<=0){return}setModalVisible(true)}} hitSlop={{top: 50, bottom: 10, left: 50, right: 50}}>
           <View style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:"row"}}>
             <Image style={{width: theme.DpWidth(44), height: theme.DpWidth(44), marginRight: theme.DpWidth(16)}} source={require('@/assets/ic_home/logo.png')} mode="aspectFill"></Image>

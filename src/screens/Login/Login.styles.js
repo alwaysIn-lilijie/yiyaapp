@@ -36,5 +36,15 @@ export const styles = StyleSheet.create({
    // elevation: 20,
     //shadowColor:'rgba(108, 152, 242, 1)',
     // '#52006A'//
+  },
+  loginBox2: {
+    backgroundColor: theme.colorForNormalButton,
+    width:"100%",
+    height: 40,
+    borderRadius: theme.DpWidth(12),
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems:'center'
   }
 });
