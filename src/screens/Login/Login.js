@@ -124,8 +124,10 @@ export function Login({ navigation }) {
             setLoginUser(data)
             setModalVisible(true)
           }else {
-            await dispatch(changeUser(resp.data[0]));
-            navigation.navigate('mainPage')
+            dispatch(changeUser(resp.data[0]))
+            navigation.push('mainPage')
+
+
 
           }
         }

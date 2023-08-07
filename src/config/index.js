@@ -6,7 +6,7 @@ const baseURL={
         production:'https://appserver.yiyahui.com'
     },
     h5:{
-        dev:'http://appweb-dev.yiyahui.com',
+        dev:'https://appweb-dev.yiyahui.com',
         // dev:'http://192.168.1.10:3000',
         production:'http://appweb.yiyahui.com'
     }

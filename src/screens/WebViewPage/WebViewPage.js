@@ -28,7 +28,7 @@ export function WebViewPage({ navigation,route }) {
         console.log(str);
 
         if(!notCloseApp){
-          navigation.goBack();
+          navigation.push('mainPage');
         }
         let infoStr=`?token=${loginInfo.user.token}&deptId=${loginInfo.deptInfo.deptId}&deptArea=${loginInfo.deptInfo.deptArea}&deptName=${loginInfo.deptInfo.deptName}`
         setWebUrl(str+infoStr)
@@ -65,7 +65,7 @@ export function WebViewPage({ navigation,route }) {
         switch (data.type){
           case "logout":
             dispatch(logout());
-            navigation.navigate("login");
+            navigation.push("login");
             break;
           // case "navigate":
           //   if(data.route){
@@ -87,8 +87,9 @@ export function WebViewPage({ navigation,route }) {
             return  Linking.openURL(`tel:${data.params.phone}`)
             break;
           default:
-            navigation.goBack();
-            console.log(data);
+            // console.log(navigation );
+            navigation.push('mainPage');
+            // console.log(data);
             break;
         }
       }
@@ -119,7 +120,7 @@ export function WebViewPage({ navigation,route }) {
         setNotCloseApp(e.canGoBack);
       }else{
         if(backButtonEnabled){
-          navigation.goBack();
+          navigation.push('mainPage');
         }
         console.log('_onNavigationStateChange------:'+(e.url));
       }
@@ -157,7 +158,7 @@ export function WebViewPage({ navigation,route }) {
         // startInLoadingState={true}
         injectedJavaScript={javaScriptCode}
         onNavigationStateChange={(e)=>_onNavigationStateChange(e)}
-        style={{ flex: 1 ,backgroundColor:'#d7def6'}}
+        style={{ flex: 1 ,backgroundColor:'#d7def6',opacity:0.99}}
         onLoadProgress={e =>setWebProgress(e.nativeEvent.progress)}
         mixedContentMode={'always'}
         onMessage={event => {
