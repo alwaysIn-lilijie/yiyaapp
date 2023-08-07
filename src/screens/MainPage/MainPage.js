@@ -155,8 +155,13 @@ export function MainPage({ navigation }) {
 
     let path = item.path;
     if (path.length > 0) {
+      if(path.indexOf('record')>=0){
+        global.$toast('iphone不支持上传录音')
+        return
+      }
       if (path.indexOf('?')>=0){
         let paths= path.split("?")
+
         navigation.push(paths[0],{webUrl:paths[1]})
       }else {
         navigation.push(path,item.params)
