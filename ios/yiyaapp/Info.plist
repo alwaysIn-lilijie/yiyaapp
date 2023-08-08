@@ -35,6 +35,10 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>CodePushDeploymentKey</key>
+	<string>roP9ZTZ58RaagQACSLDKLMvCCw6B4ksvOXqog</string>
+	<key>CodePushServerURL</key>
+	<string>http://push-server.yiyahui.com:4000/</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>dingtalk-open</string>
