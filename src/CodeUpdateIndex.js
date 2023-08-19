@@ -47,37 +47,39 @@ const CodeUpdate = () => {
     // if(ENV=='dev'){
     //   SplashScreen.hide()
     // }else {
-    //   allUpdate()
+      allUpdate()
     // }
   }, [])
 
   const allUpdate= async ()=>{
     try{
-      let res= await getUpdate()
-      console.log('111111111',res);
-      console.log(appVersion);
-      if(res.code=='200'){
-
-        let appVersionOnline=res.data.appVersion
-        // let appVersionOnlineNumber=appVersionOnline.replaceAll('.')
-        // let appVersionNumber=appVersion.replaceAll('.')
-        if(appVersionOnline !=appVersion){
-          // SplashScreen.hide()
-          setModalVisible(true);
-          setUrl(res.data.url);
-          let strArray=[]
-          if(res.data.description){
-            strArray=res.data.description.split('n')
-          }
-          setUpdateInfo(strArray);
-          setIsMandatory(false)
-        }else {
-          CodePush.disallowRestart()
-          syncImmediate()
-        }
-        console.log(res.data);
-      }
-      console.log(res);
+      // let res= await getUpdate()
+      // console.log('111111111',res);
+      // console.log(appVersion);
+      // if(res.code=='200'){
+      //
+      //   let appVersionOnline=res.data.appVersion
+      //   // let appVersionOnlineNumber=appVersionOnline.replaceAll('.')
+      //   // let appVersionNumber=appVersion.replaceAll('.')
+      //   if(appVersionOnline !=appVersion){
+      //     // SplashScreen.hide()
+      //     setModalVisible(true);
+      //     setUrl(res.data.url);
+      //     let strArray=[]
+      //     if(res.data.description){
+      //       strArray=res.data.description.split('n')
+      //     }
+      //     setUpdateInfo(strArray);
+      //     setIsMandatory(false)
+      //   }else {
+      //     CodePush.disallowRestart()
+      //     syncImmediate()
+      //   }
+      //   console.log(res.data);
+      // }
+      CodePush.disallowRestart()
+      syncImmediate()
+      // console.log(res);
     }catch (error){
       console.log(error);
     }
@@ -90,7 +92,7 @@ const CodeUpdate = () => {
     let deploymentKey=config["CodePushDeploymentKey"][Platform.OS]
     console.log(deploymentKey)
     CodePush.checkForUpdate(deploymentKey).then((update) => {
-      console.log( update)
+      console.log( update,'update')
       if (!update) {
         CodePush.allowRestart();//在加载完了，允许重启
         /*启动页控制*/
