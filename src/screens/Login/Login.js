@@ -21,7 +21,7 @@ export function Login({ navigation }) {
   const user = useSelector((state) => state.login.user);
 
   const [userSelect, setUserSelect] = useState(false);
-  const [isDev] = useState(true);
+  const [isDev] = useState(false);
   const [code, setCode] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
   const [loginUser,setLoginUser] = useState([]);
@@ -215,7 +215,7 @@ export function Login({ navigation }) {
 
           <Image source={require('@/assets/dingding.png')} style={{width:theme.DpWidth(48),height:theme.DpWidth(48), resizeMode:'contain'}} />
           <View style={{ marginLeft:5}}>
-            <TextFix style={{fontSize:theme.fontSize32, color:'#fff'}}>{loading ? "正在登录中" : '登录'}</TextFix>
+            <TextFix style={{fontSize:theme.fontSize32, color:'#fff'}}>{loading ? "正在登录中" : '登录1'}</TextFix>
           </View>
         </TouchableOpacity>
       </View>

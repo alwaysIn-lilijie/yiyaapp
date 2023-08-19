@@ -47,7 +47,7 @@ const CodeUpdate = () => {
     // if(ENV=='dev'){
     //   SplashScreen.hide()
     // }else {
-      allUpdate()
+    //   allUpdate()
     // }
   }, [])
 
