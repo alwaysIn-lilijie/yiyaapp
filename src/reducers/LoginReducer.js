@@ -50,8 +50,6 @@ const loginReducer = createSlice({
             state.deptInfo = '';
             state.menuList =[];
             state.user = undefined;
-
-
         },
         changeUser(state,action){
             state.user = action.payload;

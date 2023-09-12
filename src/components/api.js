@@ -51,11 +51,20 @@ export  const saveLog= async (data)=>{
     data:data
   })
 }
+// 账号密码登录
 export  const loginPwd= async (data)=>{
   let url='/yiya-erp/login'
   return networkService.request({
     url:baseURL+url,
     method:'post',
     data:data
+  })
+}
+// 获取用户信息
+export  const loginInfo= async ()=>{
+  let url='/yiya-erp/getInfo'
+  return networkService.request({
+    url:baseURL+url,
+    method:'get'
   })
 }
