@@ -23,7 +23,7 @@ export default module = {
         // },
         // debug: '9Iqe_D3GJbSWQWjV48N98_tRFP_HEX0RmUGyG',
         // release: '4KVdgF03R7KvqMlMEZkIk9iiwLg2CUBy47qA8',
-        ios: 'b1dyRkJ8VsT13LDpwkSfnab8GmZm4ksvOXqog '
+        ios: 'lVCxWC6q0UuvFb3n2W29V8h9ljYB4ksvOXqog'
     },
     fileTypes:['mp3','m4a','amr','aac','wav']
 

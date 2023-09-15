@@ -36,7 +36,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>CodePushDeploymentKey</key>
-	<string>b1dyRkJ8VsT13LDpwkSfnab8GmZm4ksvOXqog</string>
+	<string>lVCxWC6q0UuvFb3n2W29V8h9ljYB4ksvOXqog</string>
 	<key>CodePushServerURL</key>
 	<string>https://push-server.yiyahui.com/</string>
 	<key>LSApplicationQueriesSchemes</key>
