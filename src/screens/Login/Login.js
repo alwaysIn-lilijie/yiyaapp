@@ -115,6 +115,7 @@ export function Login({ navigation }) {
         password:password
       }
       try{
+        global.$ld()
         let res=await loginPwd(params)
         console.log(res,7777);
         let token=res.token
@@ -128,7 +129,7 @@ export function Login({ navigation }) {
         }
         // setLoginUser(params)
         await dispatch(changeUser(data));
-
+        global.$cld();
         navigation.push('mainPage')
       }catch (e){
 
