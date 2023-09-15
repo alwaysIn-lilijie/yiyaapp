@@ -1,9 +1,9 @@
 #import "AppDelegate.h"
+#import "RNSplashScreen.h"  // here
 #import <DTShareKit/DTOpenKit.h>
 #import "RNDingTalkShareModule.h"
 #import <CodePush/CodePush.h>
 #import <React/RCTBundleURLProvider.h>
-
 
 @interface AppDelegate () <DTOpenAPIDelegate>
 @end
@@ -15,11 +15,15 @@
 {
   self.moduleName = @"yiyaapp";
   [DTOpenAPI registerApp:@"dingoaeonbffy7nrsb3dgw"];
+  
    //You can add your custom initial props in the dictionary below.
   // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};
 
-  return [super application:application didFinishLaunchingWithOptions:launchOptions];
+ 
+  [super application:application didFinishLaunchingWithOptions:launchOptions];
+  [RNSplashScreen show];
+  return YES;
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge

@@ -3,8 +3,7 @@
  */
 import 'react-native-gesture-handler';
 import React, { useState, useEffect ,useRef} from 'react';
-// import RNBootSplash from "react-native-bootsplash";
-// import SplashScreen from 'react-native-splash-screen'
+import SplashScreen from 'react-native-splash-screen'
 import DeviceInfo from 'react-native-device-info';
 
 import {
@@ -45,9 +44,9 @@ const CodeUpdate = () => {
   /*热更新函数，发布的时候放开*/
   useEffect(() => {
     // if(ENV=='dev'){
-    //   SplashScreen.hide()
+      SplashScreen.hide()
     // }else {
-    //   allUpdate()
+      allUpdate()
     // }
   }, [])
 
@@ -96,7 +95,7 @@ const CodeUpdate = () => {
       if (!update) {
         CodePush.allowRestart();//在加载完了，允许重启
         /*启动页控制*/
-        // SplashScreen.hide()
+        SplashScreen.hide()
       } else {
         // SplashScreen.hide()
         console.log(update);
@@ -161,7 +160,7 @@ const CodeUpdate = () => {
         console.log(currProgress);
         if(currProgress >= 1) {
           /*启动页控制*/
-          // SplashScreen.hide()
+          SplashScreen.hide()
           CodePush.allowRestart();//在加载完了，允许重启
           // setModalVisible(false);
           // CodePush.restartApp();
