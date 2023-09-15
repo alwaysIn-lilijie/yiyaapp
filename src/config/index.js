@@ -8,7 +8,7 @@ const baseURL={
     h5:{
         dev:'https://appweb-dev.yiyahui.com',
         // dev:'http://192.168.1.10:3000',
-        production:'http://appweb.yiyahui.com'
+        production:'https://appweb.yiyahui.com'
     }
 }
 export const ENV='dev'

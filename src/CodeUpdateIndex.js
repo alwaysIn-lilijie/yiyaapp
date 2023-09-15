@@ -4,8 +4,7 @@
 import 'react-native-gesture-handler';
 import React, { useState, useEffect ,useRef} from 'react';
 import SplashScreen from 'react-native-splash-screen'
-import DeviceInfo from 'react-native-device-info';
-
+// import DeviceInfo from 'react-native-device-info';
 import {
   AppRegistry,
   StyleSheet,
@@ -16,6 +15,7 @@ import {
   Image,Linking,ScrollView
 } from 'react-native';
 import { theme } from '@/theme';
+import packageJson from '../package.json';
 console.disableYellowBox=true;
 // console.warn("YellowBox is disabled.")
 import config from "@/config";
@@ -28,7 +28,7 @@ import TextFix from '@/components/TextFix';
 import {ENV} from '@/config'
 const CodeUpdate = () => {
 
-  const appVersion = DeviceInfo.getVersion();
+  const appVersion = packageJson.version;
   console.log(appVersion);
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -43,48 +43,36 @@ const CodeUpdate = () => {
   const progressRef = useRef(null);
   /*热更新函数，发布的时候放开*/
   useEffect(() => {
-    // if(ENV=='dev'){
-      SplashScreen.hide()
-    // }else {
+
       allUpdate()
-    // }
+
   }, [])
 
   const allUpdate= async ()=>{
     try{
-      // let res= await getUpdate()
-      // console.log('111111111',res);
-      // console.log(appVersion);
-      // if(res.code=='200'){
-      //
-      //   let appVersionOnline=res.data.appVersion
-      //   // let appVersionOnlineNumber=appVersionOnline.replaceAll('.')
-      //   // let appVersionNumber=appVersion.replaceAll('.')
-      //   if(appVersionOnline !=appVersion){
-      //     // SplashScreen.hide()
-      //     setModalVisible(true);
-      //     setUrl(res.data.url);
-      //     let strArray=[]
-      //     if(res.data.description){
-      //       strArray=res.data.description.split('n')
-      //     }
-      //     setUpdateInfo(strArray);
-      //     setIsMandatory(false)
-      //   }else {
-      //     CodePush.disallowRestart()
-      //     syncImmediate()
-      //   }
-      //   console.log(res.data);
-      // }
-      CodePush.disallowRestart()
-      syncImmediate()
-      // console.log(res);
+      SplashScreen.hide()
+      let res= await getUpdate()
+      if(res.code=='200'){
+
+        let appVersionOnline=res.data.appVersion
+
+        if(appVersionOnline !=appVersion){
+          setModalVisible(true);
+          // setUrl(res.data.url);
+          let strArray=[]
+          if(res.data.description){
+            strArray=res.data.description.split('n')
+          }
+          setUpdateInfo(strArray);
+          setIsMandatory(false)
+        }else {
+          CodePush.disallowRestart()
+          syncImmediate()
+        }
+      }
     }catch (error){
       console.log(error);
     }
-
-
-
   }
 
   const syncImmediate = () => {
@@ -111,7 +99,7 @@ const CodeUpdate = () => {
   }
 
   const openUrl=()=>{
-    Linking.openURL(url)
+    // Linking.openURL(url)
   }
   const _immediateUpdate=()=>{
     setImmediateUpdate(true);
@@ -221,7 +209,7 @@ const CodeUpdate = () => {
                             onPress={() => openUrl()}
                           >
                             <View style={{backgroundColor:theme.colorForNormalButton,width:theme.screenWidth*0.7, height: 40, alignItems: theme.center, justifyContent: theme.center, margin: 10, borderRadius: 20}}>
-                              <Text style={{fontSize: 16, color: "#fff", fontWeight: '100',}}>极速下载</Text>
+                              <Text style={{fontSize: 16, color: "#fff", fontWeight: '100',}}>请前往appstore更新最新版本</Text>
                             </View>
                           </TouchableOpacity>
                         </View> :
