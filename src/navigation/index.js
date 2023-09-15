@@ -15,8 +15,8 @@ export function RootNavigator() {
   return (
     <NavigationContainer theme={theme[scheme]}>
 
-      {/*{user? <MainNavigator />:<AuthNavigator />}*/}
-      <MainNavigator />
+      {user? <MainNavigator />:<AuthNavigator />}
+      {/*<MainNavigator />*/}
     </NavigationContainer>
   );
 }

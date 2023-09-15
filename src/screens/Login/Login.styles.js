@@ -46,5 +46,15 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems:'center'
+  },
+  loginBoxImg: {
+    backgroundColor: theme.colorForNormalButton,
+    width:40,
+    height: 40,
+    borderRadius: theme.DpWidth(12),
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems:'center'
   }
 });

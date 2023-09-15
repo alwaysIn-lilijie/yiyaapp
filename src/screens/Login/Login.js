@@ -110,10 +110,14 @@ export function Login({ navigation }) {
       //   username:'常朝龙',
       //   password:'dq990327'
       // }
+      if(!username||!password){
+        return false
+      }
       let params={
         username:username,
         password:password
       }
+
       try{
         global.$ld()
         let res=await loginPwd(params)
@@ -127,10 +131,11 @@ export function Login({ navigation }) {
           userName:userdata.userName,
           userId:userdata.userId
         }
+        global.$cld();
         // setLoginUser(params)
         await dispatch(changeUser(data));
-        global.$cld();
-        navigation.push('mainPage')
+
+        // navigation.push('mainPage')
       }catch (e){
 
       }
@@ -276,13 +281,17 @@ export function Login({ navigation }) {
             <TextFix style={{fontSize:theme.fontSize32, color:'#fff'}}>{loading ? "正在登录中" : '登录'}</TextFix>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.loginBox,{marginTop:20}]} onPress={()=>handleSubmit()}>
+        <TextFix style={{textAlign:'center',marginTop:50}}>第三方登录</TextFix>
+        <View style={{justifyContent:'center',alignItems:'center'}}>
+          <TouchableOpacity style={[styles.loginBoxImg,{marginTop:20}]} onPress={()=>handleSubmit()}>
 
-          <Image source={require('@/assets/dingding.png')} style={{width:theme.DpWidth(48),height:theme.DpWidth(48), resizeMode:'contain'}} />
-          <View style={{ marginLeft:5}}>
-            <TextFix style={{fontSize:theme.fontSize32, color:'#fff'}}>{loading ? "正在登录中" : '钉钉登录'}</TextFix>
-          </View>
-        </TouchableOpacity>
+            <Image source={require('@/assets/dingding.png')} style={{width:theme.DpWidth(48),height:theme.DpWidth(48), resizeMode:'contain'}} />
+            {/*<View style={{ marginLeft:5}}>*/}
+            {/*  <TextFix style={{fontSize:theme.fontSize32, color:'#fff'}}>{loading ? "正在登录中" : '钉钉登录'}</TextFix>*/}
+            {/*</View>*/}
+          </TouchableOpacity>
+        </View>
+
       </View>
       {/*<View style={{flex:1,paddingLeft:theme.DpWidth(60),paddingRight:theme.DpWidth(60)}}>*/}
       {/*  */}

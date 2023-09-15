@@ -19,7 +19,7 @@ export function MainNavigator() {
 
   return (
     <Stack.Navigator >
-      <Stack.Screen component={Login} name={"login"} options={{ headerShown: false }} />
+      {/*<Stack.Screen component={Login} name={"login"} options={{ headerShown: false }} />*/}
       <Stack.Screen name={NAVIGATION.mainPage} component={MainPage} options={{headerShown:false}}/>
       <Stack.Screen name={NAVIGATION.webViewPage} component={WebViewPage} options={{headerShown:false}} />
 

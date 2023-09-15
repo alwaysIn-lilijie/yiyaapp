@@ -74,7 +74,7 @@ export function WebViewPage({ navigation,route }) {
         switch (data.type){
           case "logout":
             dispatch(logout());
-            navigation.push("login");
+            // navigation.push("login");
             break;
           // case "navigate":
           //   if(data.route){

@@ -171,9 +171,9 @@ export function MainPage({ navigation }) {
     }
   }
   const logoutHandle = ()=>{
-    console.log(1111);
+    // console.log(1111);
     dispatch(logout());
-    navigation.push('login')
+    // navigation.push('login')
     // setTimeout(() => {
     //
     // },1);
