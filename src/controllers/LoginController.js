@@ -7,8 +7,7 @@ export class LoginController {
     login(code) {
         console.log('code=' + code);
         return this.networkService.get({
-            url: routes.authentication.ddlogin + '?code='+code,
-            data: {code: code},
+            url: routes.authentication.ddlogin + '?code='+code
         });
     }
 

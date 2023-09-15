@@ -275,13 +275,13 @@ export function Login({ navigation }) {
             <TextFix style={{fontSize:theme.fontSize32, color:'#fff'}}>{loading ? "正在登录中" : '登录'}</TextFix>
           </View>
         </TouchableOpacity>
-        {/*<TouchableOpacity style={[styles.loginBox,{marginTop:20}]} onPress={()=>handleSubmit()}>
+        <TouchableOpacity style={[styles.loginBox,{marginTop:20}]} onPress={()=>handleSubmit()}>
 
           <Image source={require('@/assets/dingding.png')} style={{width:theme.DpWidth(48),height:theme.DpWidth(48), resizeMode:'contain'}} />
           <View style={{ marginLeft:5}}>
             <TextFix style={{fontSize:theme.fontSize32, color:'#fff'}}>{loading ? "正在登录中" : '钉钉登录'}</TextFix>
           </View>
-        </TouchableOpacity>*/}
+        </TouchableOpacity>
       </View>
       {/*<View style={{flex:1,paddingLeft:theme.DpWidth(60),paddingRight:theme.DpWidth(60)}}>*/}
       {/*  */}

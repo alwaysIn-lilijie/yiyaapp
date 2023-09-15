@@ -30,8 +30,17 @@ export function WebViewPage({ navigation,route }) {
         if(!notCloseApp){
           navigation.push('mainPage');
         }
-        let infoStr=`?token=${loginInfo.user.token}&deptId=${loginInfo.deptInfo.deptId}&deptArea=${loginInfo.deptInfo.deptArea}&deptName=${loginInfo.deptInfo.deptName}`
-        setWebUrl(str+infoStr)
+        const paramArr = str.split('_');
+        const url = paramArr[0];
+        let infoStr = `?token=${loginInfo.user.token}&userId=${loginInfo.user.userId}&userName=${loginInfo.user.userName}&deptId=${loginInfo.deptInfo.deptId}&deptArea=${loginInfo.deptInfo.deptArea}&deptName=${loginInfo.deptInfo.deptName}`;        setWebUrl(str+infoStr)
+
+        // 拼接页面路径参数
+        paramArr.forEach((item, index) => {
+          if (index !== 0) {
+            infoStr = `${infoStr}&${item}`;
+          }
+        });
+        setWebUrl(url + infoStr);
         console.log(str+infoStr);
       }
     }

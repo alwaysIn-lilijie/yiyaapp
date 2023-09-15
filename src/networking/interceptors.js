@@ -6,7 +6,6 @@
  * @LastEditTime: 2022-12-08 17:00:05
  */
 import {logout} from '@/reducers/LoginReducer';
-import {ToastAndroid } from 'react-native';
 import {store } from '@/store';
 
 
@@ -24,12 +23,7 @@ export const resInterceptor = {
     else if(response.data.code === 200){
       return response.data;
     }else if(response.data.code===500){
-
-      ToastAndroid.showWithGravity(
-        '系统异常，请联系管理员！',
-        ToastAndroid.SHORT,
-        ToastAndroid.CENTER
-      );
+      global.$toast('服务器异常，请联系管理员')
     }
     else {
       return response;
