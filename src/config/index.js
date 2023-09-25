@@ -3,7 +3,7 @@ const baseURL={
         dev:'https://gw-dev.yiyahui.com',
         // dev:'http://appserver.yiyahui.com',
         // production:'http://appserver.yiyahui.com'
-        production:'https://appserver.yiyahui.com'
+        production:'https://gw.yiyahui.com'
     },
     h5:{
         dev:'https://appweb-dev.yiyahui.com',
@@ -11,7 +11,7 @@ const baseURL={
         production:'https://appweb.yiyahui.com'
     }
 }
-export const ENV='dev'
+export const ENV='production'
 export default module = {
     baseURL:baseURL.app[ENV],
     webBaseUrl:baseURL.h5[ENV],
