@@ -137,7 +137,7 @@ export function Login({ navigation }) {
 
         // navigation.push('mainPage')
       }catch (e){
-
+        global.$cld();
       }
       return  false
     }

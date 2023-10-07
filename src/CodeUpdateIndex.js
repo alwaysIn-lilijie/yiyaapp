@@ -209,7 +209,7 @@ const CodeUpdate = () => {
                             onPress={() => openUrl()}
                           >
                             <View style={{backgroundColor:theme.colorForNormalButton,width:theme.screenWidth*0.7, height: 40, alignItems: theme.center, justifyContent: theme.center, margin: 10, borderRadius: 20}}>
-                              <Text style={{fontSize: 16, color: "#fff", fontWeight: '100',}}>请前往appstore更新最新版本</Text>
+                              <Text style={{fontSize: 16, color: "#fff", fontWeight: '100',}}>请联系管理员获取最新版本</Text>
                             </View>
                           </TouchableOpacity>
                         </View> :
