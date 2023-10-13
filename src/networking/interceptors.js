@@ -23,7 +23,7 @@ export const resInterceptor = {
     else if(response.data.code === 200){
       return response.data;
     }else if(response.data.code===500){
-      global.$toast('服务器异常，请联系管理员')
+      global.$toast(response.data.msg||'服务器异常，请联系管理员')
     }
     else {
       return response;
