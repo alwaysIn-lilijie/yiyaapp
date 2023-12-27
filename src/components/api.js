@@ -37,7 +37,7 @@ export  const getUserMenu= async ()=>{
   })
 }
 export  const getUpdate= async ()=>{
-  let url='/appserver/config/getProperties'
+  let url='/appserver/config/ios/getProperties'
   return networkService.request({
     url:baseURL+url,
     method:'get'
